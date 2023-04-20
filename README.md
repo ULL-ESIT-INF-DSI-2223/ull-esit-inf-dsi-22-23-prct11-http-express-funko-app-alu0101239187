@@ -20,6 +20,24 @@
 
 ## Introducción
 
+Esta práctica consiste principalmente en un cambio en la implementación de la aplicación cliente-servidor de registro de Funko Pops desarrollada en la [práctica 10](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct10-fs-proc-sockets-funko-app-alu0101239187.git), conviertiendo su lado servidor en un servidor [Express](https://expressjs.com) y sustituyendo el lado cliente por herramientas de procesado de peticiones HTTP, como ThunderClient. El proyecto sigue la siguiente estructura de directorios:
+
+- **dist**: Código JavaScript generado
+- **docs**: Documentación del código
+- **src**: Código fuente TypeScript
+  - **ejercicio-pe103**: Ejercicio desarrollado durante la hora de prácticas
+  - **practica**: Archivos pertenecientes a la aplicación de registro de Funkos
+- **tests**: Tests del código fuente TypeScript
+
+Durante el desarrollo del sistema, se han utilizado las siguientes herramientas:
+
+- **ESLint** para la comprobación de errores
+- **Prettier** para el formateo del código
+- **TypeDoc** para la generación automática de documentación del código
+- **Mocha** y **Chai** para el desarrollo dirigido por pruebas
+- **C8** para la comprobación del cubrimiento del código fuente
+- **GitHub Actions** para la integración continua del código ejecutado en **Node.js**, el envío de información de cubrimiento a **Coveralls** y la comprobación de calidad y seguridad del código fuente con **Sonar Cloud**
+
 ## Práctica
 
 ## Ejercicio PE 103
