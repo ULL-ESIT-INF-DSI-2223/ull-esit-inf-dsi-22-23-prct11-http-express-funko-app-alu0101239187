@@ -23,7 +23,7 @@ describe("execmd server tests", () => {
     );
   });
 
-  it("Code 400 on no cmd ", (done) => {
+  it("Code 400 on no cmd", (done) => {
     request({ url: url, json: true }, (_, response) => {
       if (response) {
         expect(response.statusCode).to.be.equal(400);

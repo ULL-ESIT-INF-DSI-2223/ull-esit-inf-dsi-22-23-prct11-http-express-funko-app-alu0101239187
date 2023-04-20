@@ -2,6 +2,12 @@ import fs from "fs";
 import { FunkoType, ResponseType } from "../types/types.js";
 import { Funko } from "../classes/funko.js";
 
+/**
+ * Adds a Funko to a collection
+ * @param user Owner of the Funko
+ * @param funko Funko to add
+ * @param cb Callback with the result
+ */
 export const addFunko = (
   user: string,
   funko: Funko,
@@ -63,6 +69,12 @@ export const addFunko = (
   });
 };
 
+/**
+ * Updates a Funko in a collection
+ * @param user Owner of the Funko
+ * @param funko Funko to update
+ * @param cb Callback with the result
+ */
 export const updateFunko = (
   user: string,
   funko: Funko,
@@ -99,6 +111,12 @@ export const updateFunko = (
   });
 };
 
+/**
+ * Removes a Funko from a collection
+ * @param user Owner of the Funko
+ * @param id ID of the Funko to remove
+ * @param cb Callback with the result
+ */
 export const removeFunko = (
   user: string,
   id: string,
@@ -122,6 +140,12 @@ export const removeFunko = (
   });
 };
 
+/**
+ * Reads a Funko from a collection
+ * @param user Owner of the Funko
+ * @param id ID of the Funko to read
+ * @param cb Callback with the result
+ */
 export const readFunko = (
   user: string,
   id: string,
@@ -150,6 +174,11 @@ export const readFunko = (
   });
 };
 
+/**
+ * Lists the Funkos from a collection
+ * @param user Owner of the Funkos
+ * @param cb Callback with the result
+ */
 export const listFunkos = (
   user: string,
   cb: (err: string | undefined, res: ResponseType | undefined) => void
@@ -158,7 +187,7 @@ export const listFunkos = (
     if (err) {
       cb(err, undefined);
     } else if (data) {
-      const funkos: FunkoType[] = JSON.parse(data);
+      const funkos: FunkoType[] = data;
 
       const response: ResponseType = {
         success: funkos ? true : false,
@@ -169,22 +198,28 @@ export const listFunkos = (
   });
 };
 
+/**
+ * Loads the Funkos from a collection
+ * @param user Owner of the Funkos
+ * @param cb Callback with the result
+ */
 const loadFunkos = (
   user: string,
-  cb: (err: string | undefined, data: string | undefined) => void
+  cb: (err: string | undefined, data: FunkoType[] | undefined) => void
 ) => {
   fs.readdir(`funkos/${user}`, function (error, files) {
     if (error) {
       cb(`La colección del usuario ${user} no existe`, undefined);
     } else {
       const funkos: FunkoType[] = [];
-      files.forEach((file) => {
+      files.forEach((file, index) => {
         fs.readFile(`funkos/${user}/${file}`, (_, data) => {
           funkos.push(JSON.parse(data.toString()));
+          if (index === files.length - 1) {
+            cb(undefined, funkos);
+          }
         });
       });
-      console.log(funkos);
-      cb(undefined, funkos.toString());
     }
   });
 };
