@@ -65,6 +65,12 @@ Además, el servidor responderá con distintos códigos de estado en cada caso:
 
 ## Ejercicio PE 103
 
+El ejercicio de la sesión de prácticas trata del desarrollo de un servidor Express en el que las peticiones contienen un comando que será ejecutado por este. El servidor recibe las peticiones GET al directorio `/execmd`, siendo el resto respondidas con el código de estado 404. Para el resto de peticiones se responde con distintos códigos de estado:
+
+- *400*: La petición no contiene el comando a ejecutar.
+- *500*: Ha ocurrido un error durante la ejecución del comando y se envía el mensaje de error.
+- *200*: El comando se ha ejecutado correctamente y se envía el resultado.
+
 ## Conclusión
 
 ## Bibliografía
