@@ -40,6 +40,29 @@ Durante el desarrollo del sistema, se han utilizado las siguientes herramientas:
 
 ## Práctica
 
+Como se mencionó anteriormente, se ha cambiado la implementación de la aplicación de registro de Funko Pops, por lo que se tratarán únicamente los cambios que se han realizado.
+
+### Cliente
+
+El lado cliente de la aplicación ha sido eliminado por completo, siendo sustituido por herramientas de procesado de peticiones HTTP.
+
+### Servidor
+
+El lado servidor ha cambiado enormemente. La gestión de ficheros se ha mantenido casi idéntica, introduciendo el patrón callback para devolver los resultados de las operaciones. Se han cambiado los tipos con los que trabaja el servidor, añadiendo un tipo que representa la estructura JSON de un Funko y simplificando el tipo de respuesta, al que se le ha eliminado el tipo de operación que se está realizando. Al cambiar el servidor de los sockets ofrecidos por `net` a Express, este ahora responde a peticiones HTTP mediante el uso de los métodos propios de este y no mediante listeners. El servidor reacciona distinto dependiendo del verbo utilizado para la petición al directorio `\funkos`:
+
+- *get*: Mediante GET se accede a las operaciones de lectura y listado. Las consultas deben contener un usuario y si la petición incluye en la consulta un ID, se responderá con el Funko del usuario con dicho ID. En caso de que no se incluya un ID, se interpretará como una operación de listado y se responderá con todos los Funkos del usuario.
+- *post*: Mediante POST se añade un nuevo Funko. El cuerpo de la petición contendrá el usuario al que añadir el Funko y los datos del Funko, ya que al utilizar POST no se envía datos mediante la URL. Para su funcionamiento, se tuvo que añadir la libería `body-parser`, ya que en caso contrario el contenido de la petición aparecía como `undefined`.
+- *delete*: Mediante DELETE se elimina un Funko. El cuerpo de la petición contendrá el usuario del que eliminar el Funko y el ID del Funko, ya que al utilizar DELETE no se envía datos mediante la URL.
+- *patch*: Mediante PATCH se actualiza un Funko. El cuerpo de la petición contendrá el usuario del que actualizar el Funko y los datos del Funko, ya que al utilizar PATCH no se envía datos mediante la URL.
+- *all*: En caso de que la petición utilice un verbo no contemplado o intente acceder a otra ruta el servidor responderá con un código 404.
+
+Además, el servidor responderá con distintos códigos de estado en cada caso:
+
+- *404*: La petición es incorrecta.
+- *400*: La petición no contiene los datos necesarios para realizar la operación requerida y se envía el mensaje de error.
+- *500*: Ha ocurrido un error durante la ejecución de la operación requerida y se envía el mensaje de error.
+- *200*: La operación requerida se ha ejecutado correctamente y se envía el resultado.
+
 ## Ejercicio PE 103
 
 ## Conclusión
