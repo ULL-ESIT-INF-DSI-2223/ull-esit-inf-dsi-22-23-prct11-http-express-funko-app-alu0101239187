@@ -73,4 +73,6 @@ El ejercicio de la sesión de prácticas trata del desarrollo de un servidor Exp
 
 ## Conclusión
 
+En esta práctica hemos tratado el uso un gran número de funcionalidades proporcionadas por el entorno asíncrono de Node, como el uso de sockets, ejecución de comandos y gestión de ficheros manera asíncrona. De esta manera, comenzamos a introducir una nueva manera de programar que introduce bastantes cambios respecto a la programación síncrona a la que estamos acostumbrados.
+
 ## Bibliografía
