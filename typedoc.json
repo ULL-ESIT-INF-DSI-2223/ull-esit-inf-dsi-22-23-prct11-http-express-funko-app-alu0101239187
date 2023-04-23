@@ -1,4 +1,7 @@
 {
-  "entryPoints": ["./src/*/*"],
+  "entryPoints": [
+    "./src/ejercicio-pe103/*/*",
+    "./src/practica/*/*",
+  ],
   "out": "./docs"
 }
