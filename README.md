@@ -73,6 +73,10 @@ El ejercicio de la sesión de prácticas trata del desarrollo de un servidor Exp
 
 ## Conclusión
 
-En esta práctica hemos tratado el uso un gran número de funcionalidades proporcionadas por el entorno asíncrono de Node, como el uso de sockets, ejecución de comandos y gestión de ficheros manera asíncrona. De esta manera, comenzamos a introducir una nueva manera de programar que introduce bastantes cambios respecto a la programación síncrona a la que estamos acostumbrados.
+En esta práctica hemos creado un servidor que atiende a peticiones HTTP, acercándonos cada vez más a programas que pueden tener aplicaciones reales y, además, hemos aprendido ha realizar estas peticiones para que nuestras aplicaciones puedan trabajar con APIs públicas.
 
 ## Bibliografía
+
+- [Desarrollo de Sistemas Informáticos - Práctica 11 - Creación de una aplicación Express para gestionar el registro de Funko Pops](https://ull-esit-inf-dsi-2223.github.io/prct11-http-express-funko-app/)
+- [Desarrollo de Sistemas Informáticos - Node.js](https://ull-esit-inf-dsi-2223.github.io/nodejs-theory/)
+- [Node.js request documentation](https://www.npmjs.com/package/request)
